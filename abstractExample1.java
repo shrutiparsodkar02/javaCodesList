@@ -1,6 +1,10 @@
 import java.util.*;
-abstract class MyClass{
-	abstract void calculate(int x);
+//we cannot remove abstract keyword it will throw error MyClass is not abstract and does not override abstract method calculate(int) in MyClass
+
+ abstract class MyClass{
+ //if before method we dont write abstract it will give error --> error: missing method body, or declare abstract
+
+	 void calculate(int x);
 }
 class Sub1 extends MyClass{
 	void calculate(int x){
