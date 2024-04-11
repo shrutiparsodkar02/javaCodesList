@@ -4,7 +4,7 @@ import java.util.*;
  abstract class MyClass{
  //if before method we dont write abstract it will give error --> error: missing method body, or declare abstract
 
-	 void calculate(int x);
+	abstract void calculate(int x);
 }
 class Sub1 extends MyClass{
 	void calculate(int x){
@@ -23,11 +23,19 @@ class Sub3 extends MyClass{
 }
 class FinalClass{
 	public static void main(String args[]){
+		MyClass ref;
 		Sub1 sqr=new Sub1();
+		ref=sqr;
+		ref.calculate(5);
+		
+		
 		Sub2 cube=new Sub2();
+		ref=cube;
+		ref.calculate(2);
+		
+		
 		Sub3 sqroot =new Sub3();
-		sqr.calculate(5);
-		cube.calculate(2);
-		sqroot.calculate(100);
+		ref=sqroot;
+		ref.calculate(100);
 	}
 }
