@@ -4,8 +4,9 @@ class CountFiles{
 	int filesCount=0;
 	int javaCount=0;
 	int cFiles=0;
+	int txtfile1=0;
 	int imgFile=0;
-	void setCountDirectories(String path)throws Exception{
+	/*void setCountDirectories(String path)throws Exception{
 		try{
 			File fr=new File(path);
 			File[] strarr=fr.listFiles();
@@ -20,7 +21,7 @@ class CountFiles{
 				}
 				else{
 					
-					//System.out.println("files-->"+strarr[i]);
+					System.out.println("files-->"+strarr[i]);
 					filesCount++;
 				}
 			}
@@ -28,29 +29,43 @@ class CountFiles{
 		catch(Exception e){
 			System.out.println(e);
 		}
-	}
-	void checkJavaFiles(String path)throws Exception{
+	}*/
+	void checkFiles(String path)throws Exception{
 		File fr=new File(path);
 		File[] strarr=fr.listFiles();
 		for(int i=0;i<strarr.length;i++){ 
-			String s=strarr[i].getAbsolutePath();
-			boolean javaFile=s.endsWith(".java");
-			//System.out.println(s);
-			/*boolean res1=strarr[i].isDirectory();
+			
+			//String s=strarr[i].getAbsolutePath();
+			String str=strarr[i].getAbsolutePath();
 			boolean isfile=strarr[i].isFile();
-			boolean javaFile=s.endsWith(".java");
-			if(res1==true){
-				//directoriesCount++;	
-				setCountDirectories(s);
-				String s1=strarr[i].getAbsolutePath();
-				System.out.println(s1);
+			boolean isdir=strarr[i].isDirectory();
+			boolean javaFile=str.endsWith(".java");
+			boolean classfile=str.endsWith(".class");
+			boolean txtfile=str.endsWith(".txt");
+			boolean imgfile=str.endsWith(".jpg");
+			boolean imgfile2=str.endsWith(".png");
+			if(isdir==true){
+				directoriesCount++;	
+				checkFiles(str);
+				
+			}
+			else{
 				if(javaFile==true){
 					javaCount++;
+					filesCount++;		
 				}
-			}*/
-			if(javaFile==true){
-				//checkJavaFiles(s);
-				javaCount++;
+				else if(classfile==true){
+					cFiles++;
+					filesCount++;	
+				}
+				else if(txtfile==true){
+					txtfile1++;
+					filesCount++;	
+				}
+				else if(imgfile==true || imgfile2==true ){
+					imgFile++;
+					filesCount++;	
+				}
 			}
 			
 			
@@ -59,16 +74,14 @@ class CountFiles{
 	}
 	public static void main(String args[])throws Exception{
 		CountFiles cf=new CountFiles();
-		String path="/home/shruti/Desktop/git demo files/javaCodesList/democodes";
-		cf.setCountDirectories(path);
-		cf.checkJavaFiles(path);
+		String path="/home/shruti/Desktop/git demo files";
+		cf.checkFiles(path);
 		System.out.println("Folder Count-->"+cf.directoriesCount);
 		System.out.println("File Count-->"+cf.filesCount);
 		System.out.println("java files are--->"+cf.javaCount);
-		//String s="sh.java";
-		//System.out.println(s.endsWith(".java"));
-		
-		
+		System.out.println("image files are--->"+cf.imgFile);
+		System.out.println("txt files are--->"+cf.txtfile1);
+		System.out.println("class files are--->"+cf.cFiles);
 	}
 
 }
