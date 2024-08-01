@@ -39,6 +39,7 @@ class CountFiles{
 			String str=strarr[i].getAbsolutePath();
 			boolean isfile=strarr[i].isFile();
 			boolean isdir=strarr[i].isDirectory();
+			
 			boolean javaFile=str.endsWith(".java");
 			boolean classfile=str.endsWith(".class");
 			boolean txtfile=str.endsWith(".txt");
@@ -55,7 +56,7 @@ class CountFiles{
 					filesCount++;		
 				}
 				else if(classfile==true){
-					cFiles++;
+					cFiles++;;
 					filesCount++;	
 				}
 				else if(txtfile==true){
